@@ -57,10 +57,10 @@ def load_data(filepath):
             value = parts[4]
 
 
-    # ---------------------------------------------
-    # Step 9: Create dictionary for 
-    # row and append to data list then return data.
-    # ---------------------------------------------
+        # ---------------------------------------------
+        # Step 9: Create dictionary for 
+        # row and append to data list then return data.
+        # ---------------------------------------------
             record = {
                 "title": title,
                 "year": year,
@@ -72,7 +72,7 @@ def load_data(filepath):
 
 
 #----------------------------------------
-# Define filter_Data function 
+# Define filter_data function 
 # ---------------------------------------
 def filter_data(data, column, value):
     """Filters the dataset based on a column and value."""
@@ -84,3 +84,20 @@ def filter_data(data, column, value):
             filtered.append(record)
     return filtered
 
+
+# -------------------------------------------------------
+# Define get_category_stats function and return 
+# the minimum, maximum, and average for a numeric column.
+# -------------------------------------------------------
+def get_category_stats(data, column):
+    """Returns the minimum, maximum, and average for a numeric column."""
+    values = []
+
+    for record in data:
+        values.append(float(record[column]))
+
+    low = min(values)
+    high = max(values)
+    avg = round(sum(values) / len(values), 2)
+
+    return low, high, avg
