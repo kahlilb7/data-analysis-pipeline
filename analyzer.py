@@ -3,7 +3,9 @@
 # Description: This program analyzes a movie dataset and generates summary statistics and insights.
 # Dataset: movies.csv
 
-# constant storing the dataset filename
+#----------------------------------------------
+# Step 1: constant storing the dataset filename
+#----------------------------------------------
 DATASET = "movies.csv"
 
 # ---------------------------------
@@ -48,24 +50,37 @@ def load_data(filepath):
         # -------------------------------------------------------------
         # Step 8: Assign values to variables and store in a dictionary.
         # -------------------------------------------------------------
-        title = parts[0]
-        year = parts[1]
-        genre = parts[2]
-        rating = parts[3]
-        value = parts[4]
+            title = parts[0]
+            year = parts[1]
+            genre = parts[2]
+            rating = parts[3]
+            value = parts[4]
 
 
     # ---------------------------------------------
     # Step 9: Create dictionary for 
     # row and append to data list then return data.
     # ---------------------------------------------
-    record = {
-        "title": title,
-        "year": year,
-        "genre": genre,
-        "rating": rating,
-        "value": value}
-    data.append(record)
-    return data
+            record = {
+                "title": title,
+                "year": year,
+                "genre": genre,
+                "rating": rating,
+                "value": value}
+            data.append(record)
+        return data
 
+
+#----------------------------------------
+# Define filter_Data function 
+# ---------------------------------------
+def filter_data(data, column, value):
+    """Filters the dataset based on a column and value."""
+    filtered = []
+# Loop through each record in the dataset and check if the 
+# specified column matches the value. If it does, add the record to the filtered list.
+    for record in data:
+        if record[column] == value:
+            filtered.append(record)
+    return filtered
 
