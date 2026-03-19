@@ -14,8 +14,14 @@ def load_data(filepath):
     
     data = []
 
+
 # -------------------------------
 # Step 3: Open the file
 # -------------------------------
     with open(filepath, "r") as file:
-        pass
+    
+    
+        # -------------------------------
+        # Step 4: Read lines from the file
+        # -------------------------------
+        lines = file.readlines()
