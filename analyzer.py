@@ -10,7 +10,12 @@ DATASET = "movies.csv"
 # Step 2: Define load_data function
 # -------------------------------
 def load_data(filepath):
-    """
-    Loads data from a CSV file and returns a list of dictionaries.
-    """
+    """Loads data from a CSV file and returns a list of dictionaries."""
+    
     data = []
+
+# -------------------------------
+# Step 3: Open the file
+# -------------------------------
+    with open(filepath, "r") as file:
+        pass
