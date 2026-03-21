@@ -135,11 +135,13 @@ def summarize(data):
 
 
 # ---------------------------------------
-# Define display_summary function 
+# Define display_summary function
 # ---------------------------------------
-def display_summary(summary):
+def display_summary(data):
     """Displays the summary statistics."""
     
+    summary = summarize(data)
+
     print("Total Records:", summary["total_records"])
     print("Unique Genres:", summary["unique_genres"])
     print("Average Rating:", summary["average_rating"])
