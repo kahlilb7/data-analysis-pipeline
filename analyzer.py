@@ -114,11 +114,12 @@ def summarize(data):
 
     genres = []
     ratings = []
-
+    # Loop through each record in the dataset and extract the genre and rating,
     for record in data:
         genres.append(record["genre"])
         ratings.append(float(record["rating"]))
-
+    # appending the genre to the genres list and converting the 
+    # rating to a float before appending it to the ratings list.
     unique_genres = len(set(genres))
     average_rating = round(sum(ratings) / len(ratings), 2)
 
@@ -126,4 +127,16 @@ def summarize(data):
         "total_records": total_records,
         "unique_genres": unique_genres,
         "average_rating": average_rating}
+
+
+# ---------------------------------------
+# Define display_summary function 
+# ---------------------------------------
+def display_summary(summary):
+    """Displays the summary statistics."""
+    
+    print("Total Records:", summary["total_records"])
+    print("Unique Genres:", summary["unique_genres"])
+    print("Average Rating:", summary["average_rating"])
+
 
