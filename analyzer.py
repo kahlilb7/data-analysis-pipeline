@@ -17,9 +17,9 @@ def load_data(filepath):
     data = []
 
 
-# ---------------------------------------
-# Step 3: Open the file using "with" loop
-# ---------------------------------------
+    # ---------------------------------------
+    # Step 3: Open the file using "with" loop
+    # ---------------------------------------
     with open(filepath, "r") as file:
     
     
@@ -41,15 +41,15 @@ def load_data(filepath):
         for line in lines:  
 
 
-        # -----------------------------------------------------------
-        # Step 7: Split line into parts and store in a formated list.
-        # -----------------------------------------------------------
+            # -----------------------------------------------------------
+            # Step 7: Split line into parts and store in a formated list.
+            # -----------------------------------------------------------
             parts = line.strip().split(",") 
 
         
-        # -------------------------------------------------------------
-        # Step 8: Assign values to variables and store in a dictionary.
-        # -------------------------------------------------------------
+            # -------------------------------------------------------------
+            # Step 8: Assign values to variables and store in a dictionary.
+            # -------------------------------------------------------------
             title = parts[0]
             year = parts[1]
             genre = parts[2]
@@ -57,10 +57,10 @@ def load_data(filepath):
             value = parts[4]
 
 
-        # ---------------------------------------------
-        # Step 9: Create dictionary for 
-        # row and append to data list then return data.
-        # ---------------------------------------------
+            # ---------------------------------------------
+            # Step 9: Create dictionary for 
+            # row and append to data list then return data.
+            # ---------------------------------------------
             record = {
                 "title": title,
                 "year": year,
@@ -77,8 +77,8 @@ def load_data(filepath):
 def filter_data(data, column, value):
     """Filters the dataset based on a column and value."""
     filtered = []
-# Loop through each record in the dataset and check if the 
-# specified column matches the value. If it does, add the record to the filtered list.
+    # Loop through each record in the dataset and check if the 
+    # specified column matches the value. If it does, add the record to the filtered list.
     for record in data:
         if record[column] == value:
             filtered.append(record)
@@ -95,9 +95,35 @@ def get_category_stats(data, column):
 
     for record in data:
         values.append(float(record[column]))
-
+    # reads through each record in the dataset and converts the specified column's value to a float,
+    # appending it to the values list
     low = min(values)
     high = max(values)
     avg = round(sum(values) / len(values), 2)
 
     return low, high, avg
+
+
+# -----------------------------------------------------------------------
+# Define summarize function to return summary statistics for the dataset.
+# -----------------------------------------------------------------------
+def summarize(data):
+    """Returns summary statistics for the dataset."""
+    
+    total_records = len(data)
+
+    genres = []
+    ratings = []
+
+    for record in data:
+        genres.append(record["genre"])
+        ratings.append(float(record["rating"]))
+
+    unique_genres = len(set(genres))
+    average_rating = round(sum(ratings) / len(ratings), 2)
+
+    return {
+        "total_records": total_records,
+        "unique_genres": unique_genres,
+        "average_rating": average_rating}
+
