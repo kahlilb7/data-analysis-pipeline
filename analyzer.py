@@ -186,15 +186,18 @@ def export_report(data, output_filepath, top_n=5):
 # Define main function
 # ---------------------------------------
 def main():
-    data = load_data(DATASET)
+   '''Controls the flow of the program by calling the main analysis functions
+in order and generating the final report.'''
 
-    display_summary(data)
+data = load_data(DATASET)
 
-    insights = generate_insights(data)
-    for insight in insights:
-        print("-", insight)
+display_summary(data)
 
-    export_report(data, "report.txt")
+insights = generate_insights(data)
+for insight in insights:
+    print("-", insight)
+
+export_report(data, "report.txt")
 
 if __name__ == "__main__":
     main()
