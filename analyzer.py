@@ -186,7 +186,7 @@ def export_report(data, output_filepath, top_n=5):
 # Define main function
 # ---------------------------------------
 def main():
-   '''Controls the flow of the program by calling the main analysis functions
+    '''Controls the flow of the program by calling the main analysis functions
     in order and generating the final report.'''
 
     data = load_data(DATASET)
