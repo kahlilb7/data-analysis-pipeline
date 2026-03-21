@@ -104,9 +104,9 @@ def get_category_stats(data, column):
     return low, high, avg
 
 
-# -----------------------------------------------------------------------
-# Define summarize function to return summary statistics for the dataset.
-# -----------------------------------------------------------------------
+# ---------------------------------------
+# Define summarize function
+# ---------------------------------------
 def summarize(data):
     """Returns summary statistics for the dataset."""
     
@@ -114,13 +114,18 @@ def summarize(data):
 
     genres = []
     ratings = []
-    # Loop through each record in the dataset and extract the genre and rating,
+
     for record in data:
         genres.append(record["genre"])
         ratings.append(float(record["rating"]))
-    # appending the genre to the genres list and converting the 
-    # rating to a float before appending it to the ratings list.
-    unique_genres = len(set(genres))
+
+    unique = []
+
+    for genre in genres:
+        if genre not in unique:
+            unique.append(genre)
+
+    unique_genres = len(unique)
     average_rating = round(sum(ratings) / len(ratings), 2)
 
     return {
@@ -140,3 +145,62 @@ def display_summary(summary):
     print("Average Rating:", summary["average_rating"])
 
 
+# ------------------------------------------------------------------------
+# Define generate_insights function and return insights about the dataset.
+# ------------------------------------------------------------------------
+def generate_insights(data):
+    """Generates insights about the dataset."""
+    
+    insights = []
+
+    rating_stats = get_category_stats(data, "rating")
+    value_stats = get_category_stats(data, "value")
+    summary = summarize(data)
+
+    insights.append("The average rating is " + str(summary["average_rating"]) + ".")
+    insights.append("The highest rating in the dataset is " + str(rating_stats[1]) + ".")
+    insights.append("The highest value in the dataset is " + str(value_stats[1]) + ".")
+    
+    return insights
+
+
+# ---------------------------------------
+# Define export_report function
+# ---------------------------------------
+def export_report(data, output_filepath, top_n=5):
+    """Exports the top N records to a file."""
+    
+    summary = summarize(data)
+    insights = generate_insights(data)
+
+    sorted_data = data[:]
+
+    for i in range(len(sorted_data)):
+        for j in range(i + 1, len(sorted_data)):
+            if float(sorted_data[j]["rating"]) > float(sorted_data[i]["rating"]):
+                temp = sorted_data[i]
+                sorted_data[i] = sorted_data[j]
+                sorted_data[j] = temp
+
+    top_records = sorted_data[:top_n]
+
+    with open(output_filepath, "w") as file:
+        file.write("Dataset Summary\n")
+        file.write("Total Records: " + str(summary["total_records"]) + "\n")
+        file.write("Unique Genres: " + str(summary["unique_genres"]) + "\n")
+        file.write("Average Rating: " + str(summary["average_rating"]) + "\n\n")
+
+        file.write("Insights\n")
+        for insight in insights:
+            file.write("- " + insight + "\n")
+
+        file.write("\nTop Records by Rating\n")
+        for record in top_records:
+            line = (
+                record["title"]
+                + " | Year: " + record["year"]
+                + " | Genre: " + record["genre"]
+                + " | Rating: " + record["rating"]
+                + " | Value: " + record["value"]
+            )
+            file.write(line + "\n")
