@@ -17,9 +17,8 @@ Author: Kahlil Batieste
 
 DATASET = "movies.csv"
 
-# ---------------------------------
-# Define load_data function
-# ---------------------------------
+# --- Data Loading ---
+
 def load_data(filepath):
     """Loads data from a CSV file and returns a list of dictionaries."""
     
@@ -55,9 +54,8 @@ def load_data(filepath):
         return data
 
 
-#----------------------------------------
-# Define filter_data function 
-# ---------------------------------------
+# --- Data Filtering ---
+
 def filter_data(data, column, value):
     """Filters the dataset based on a column and value."""
     filtered = []
@@ -69,10 +67,7 @@ def filter_data(data, column, value):
     return filtered
 
 
-# -------------------------------------------------------
-# Define get_category_stats function and return 
-# the minimum, maximum, and average for a numeric column.
-# -------------------------------------------------------
+# --- Statistical Analysis ---
 def get_category_stats(data, column):
     """Returns the minimum, maximum, and average for a numeric column."""
     values = []
@@ -88,9 +83,8 @@ def get_category_stats(data, column):
     return low, high, avg
 
 
-# ---------------------------------------
-# Define summarize function
-# ---------------------------------------
+# --- Dataset Summary ---
+
 def summarize(data):
     """Returns summary statistics for the dataset."""
     
@@ -118,9 +112,8 @@ def summarize(data):
         "average_rating": average_rating}
 
 
-# ---------------------------------------
-# Define display_summary function
-# ---------------------------------------
+# --- Display Output ---
+
 def display_summary(data):
     """Displays the summary statistics."""
     
@@ -131,9 +124,8 @@ def display_summary(data):
     print("Average Rating:", summary["average_rating"])
 
 
-# ------------------------------------------------------------------------
-# Define generate_insights function and return insights about the dataset.
-# ------------------------------------------------------------------------
+# --- Insight Generation ---
+
 def generate_insights(data):
     """Generates insights about the dataset."""
     
@@ -150,9 +142,8 @@ def generate_insights(data):
     return insights
 
 
-# ---------------------------------------
-# Define export_report function
-# ---------------------------------------
+# --- Report Export ---
+
 def export_report(data, output_filepath, top_n=5):
     """Exports the top N records to a file."""
     
@@ -193,9 +184,8 @@ def export_report(data, output_filepath, top_n=5):
             file.write(line + "\n")
 
 
-# ---------------------------------------
-# Define main function
-# ---------------------------------------
+# --- Program Entry Point ---
+
 def main():
     '''Controls the flow of the program by calling the main analysis functions
     in order and generating the final report.'''
