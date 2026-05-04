@@ -135,10 +135,10 @@ def generate_insights(data):
     value_stats = get_category_stats(data, "value")
     summary = summarize(data)
 
-    insights.append("The average rating is " + str(summary["average_rating"]) + ".")
-    insights.append("The highest rating in the dataset is " + str(rating_stats[1]) + ".")
-    insights.append("The highest value in the dataset is " + str(value_stats[1]) + ".")
-    
+    insights.append("The dataset has an average rating of " + str(summary["average_rating"]) + ", showing that most movies in the file are rated fairly high overall.")
+    insights.append("The highest-rated movie has a rating of " + str(rating_stats[1]) + ", which helps identify the strongest entry in the dataset.")
+    insights.append("The highest value is " + str(value_stats[1]) + ", showing that rating and value are both useful for comparing movie success.")
+
     return insights
 
 
