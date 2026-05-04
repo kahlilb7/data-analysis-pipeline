@@ -1,11 +1,20 @@
-# Name: Kahlil Batieste
-# Date: 03/18/2026
-# Description: This program analyzes a movie dataset and generates summary statistics and insights.
-# Dataset: movies.csv
+"""
+Data Analysis Pipeline
 
-#----------------------------------------------
-# Constant storing the dataset filename
-#----------------------------------------------
+This program loads a dataset from a CSV file, processes and analyzes
+the data, and generates summary statistics and insights.
+
+Features:
+- Load and structure CSV data
+- Filter dataset by category
+- Compute statistics (min, max, average)
+- Generate insights from data
+- Export formatted report
+
+Dataset: movies.csv
+Author: Kahlil Batieste
+"""
+
 DATASET = "movies.csv"
 
 # ---------------------------------
