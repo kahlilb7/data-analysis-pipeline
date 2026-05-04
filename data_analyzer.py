@@ -32,6 +32,8 @@ def load_data(filepath):
 
         for line in lines:  
             
+            # Split each row into columns 
+            # so we can map values to dictionary keys
             parts = line.strip().split(",") 
  
             # Assign values to variables and store in a dictionary.
